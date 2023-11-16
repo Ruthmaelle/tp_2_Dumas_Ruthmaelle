@@ -6,17 +6,14 @@
     <title>Formulaire</title>
     <!-- link to css -->
     <link rel="stylesheet" href="./styles/style.css"/>
-    <!--link rel="stylesheet" type="text/css" href="./styles/style.css" -->
 </head>
-<body> <!-- Works! --> 
-    <form action="./Pages/adress.php" method="post">
-    <label for="nom">Nom</label>
-    <input type="text" name="nom" id="nom"> 
-    <label for="prenom">Prenom</label>
-    <input type="text" name="prenom" id="prenom"> <br> <br> <br>
-    <label for="Nbr_addresse">Combien d'adresse avez vous</label> <br>
-    <input type="number" name="Nbr_addresse" id="Nbr_addresse" required><br><br>
-    <input type="submit" value="Confirmer" class="button">
+<body > <!-- Works! --> 
+    <center><p>Bienvenue sur notre site</p></center>
+    <center><p>Veuillez saisir les informations demandé</p></center> <br> <br>
+    <form action="./Pages/address.php" method="post"> 
+    <center> <label for="Nbr_addresse">Combien d'adresse avez vous</label> <br></center> <br>
+    <center><input type="text" name="Nbr_addresse" id="Nbr_addresse" required><br><br></center> 
+    <center><input type="submit" value="Confirmer" class="button" width="50px"></center>
     </form>
 </body>
 </html>

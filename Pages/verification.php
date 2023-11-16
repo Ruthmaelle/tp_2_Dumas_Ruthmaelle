@@ -35,7 +35,7 @@
     ?>
 
     <button type="submit" name ="approuver">Confirmer</button>
-    <button type="button" onclick="window.location.href='adress.php';">Annuler</button>
+    <button type="button" onclick="window.location.href='address.php';">Annuler</button>
     </form>
 </body>
 </html>

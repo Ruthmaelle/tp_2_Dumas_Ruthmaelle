@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./styles/style.css"/>
     <title>Formulaire d'Adresse</title>
 </head>
 <body>
+    <?php
+    if (is_numeric($_POST["Nbr_addresse"])){
+        $nbr = intval($_POST["Nbr_addresse"]);
+        for ($i=1; $i <=$nbr ; $i++) { 
+                    
+        
+    
+    ?>
     <form action="./verification.php" method="post">
-    <label for="street">Street/Rue:</label> <br>
-    <input type="text" name="street" id="street" required> <br><br>
+        <fieldset>
+        <legend>Vos coordonées</legend>
+        <label for="street">Street/Rue:</label> <br>
+        <input type="text" name="street" id="street" required> <br><br>
 
     <label for="no_street">No street/No Rue:</label> <br>
     <input type="number" name="no_street" id="no_street" required> <br><br>
@@ -72,8 +84,22 @@
     <label for="zipcode">Zipcode</label>
     <input type="text" name="zipcode" id="zipcode" required> <br><br>
 
-    <input type="submit" value="Confirmer">
+    <button type="submit" class="confirmer">Confirmer</button>
 
+        </fieldset>
+    
+<?php
+        }
+    } else {
+        echo("Saisie invalide"); ?> <br> <br> <?php 
+        echo("Veuillez appuyer sur retour pour saisir un chiffre valide"); ?> <br> <br> <?php 
+        ?>
+        <button type="button" onclick="window.location.href='index.php';">Retour</button>
+        <?php
+    };
+    ?>
+
+    <!--boutton confirmer --> 
     </form>
 </body>
 </html>
