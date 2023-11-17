@@ -1,18 +1,14 @@
 <?php
+//page de validation des champs d'adresses
 
 function validateStreet($street) {
-    // Validation pour une chaîne de caractères avec une longueur maximale de 50
     return is_string($street) && strlen($street) <= 50;
-}
-
-function validateStreetNumber($no_street) {
-    // Validation pour un nombre entier
-    return is_int($no_street);
+    echo("street name invalid");
 }
 
 function validateZipcode($zipcode) {
-    // Validation pour une chaîne de 6 caractères
-    return is_string($zipcode) && strlen($zipcode) === 6;
+    return strlen($zipcode) === 6;
+    echo("zip code invalid");
 }
 
 ?>

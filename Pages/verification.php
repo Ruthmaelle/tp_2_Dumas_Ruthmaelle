@@ -1,5 +1,5 @@
 <?php
-require_once("./functions/validation/");
+require_once("../functions/validation");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
@@ -12,16 +12,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Valider les données
     $isValid = (
         validateStreet($street) &&
-        validateStreetNumber($no_street) &&
         validateZipcode($zipcode)
     );
 
     if ($isValid) {
         // Les données sont valides
-        echo "Les données sont valides.";
+        
     } else {
         // Les données ne sont pas valides, afficher un message d'erreur 
-        echo "Les données ne sont pas valides. Veuillez corriger les erreurs.";
+        if (!validateStreet($street)) {
+            echo "Rue saisi invalide" ;
+        } 
+        if (!validateZipcode($zipcode)) {
+            echo "Zipcode saisi invalide" ;
+        }
+        echo "Le(s) donnée(s) ne sont pas valides. Veuillez corriger les erreurs.";
+        ?> <br><br> <button onclick="window.history.back();" class="confirm">Retour</button> <?php
+        exit();
+
     }
 }
 ?>
