@@ -1,5 +1,5 @@
 <?php
-require_once("../functions/validation");
+require_once("../functions/valider.php");
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>verification</title>
+    <link rel="stylesheet" href="../styles/affiche.css"/>
 </head>
 <body>
     <div>
@@ -59,8 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
     </div>
     <h2>Veuillez confirmer si vos informations sont corrects ou annuler dans le cas contraire</h2>
-    <button type="submit" name ="approuver">Confirmer</button>
-     <button onclick="window.history.back();" class="confirm">Annuler</button> 
+    <button type="submit" name ="approuver" class="but">Confirmer</button>
+     <button onclick="window.history.back();" class="annuler">Annuler</button> 
     </form>
 </body>
 </html>
