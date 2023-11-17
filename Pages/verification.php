@@ -1,3 +1,33 @@
+<?php
+require_once("./functions/validation/");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   
+    $street = $_POST["street"];
+    $no_street = $_POST["no_street"];
+    $type = $_POST["type"];
+    $city = $_POST["city"];
+    $zipcode = $_POST["zipcode"];
+
+    // Valider les données
+    $isValid = (
+        validateStreet($street) &&
+        validateStreetNumber($no_street) &&
+        validateZipcode($zipcode)
+    );
+
+    if ($isValid) {
+        // Les données sont valides
+        echo "Les données sont valides.";
+    } else {
+        // Les données ne sont pas valides, afficher un message d'erreur 
+        echo "Les données ne sont pas valides. Veuillez corriger les erreurs.";
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
