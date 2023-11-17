@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./styles/style.css"/>
     <title>Formulaire d'Adresse</title>
+    <link rel="stylesheet" href="../styles/style.css"/>
 </head>
 <body>
     <?php
+    //verifier si l'utilisateur entre un chiffre, si c'est un nombre a virgule on se charge de le convertir
     if (is_numeric($_POST["Nbr_addresse"])){
         $nbr = intval($_POST["Nbr_addresse"]);
-        for ($i=1; $i <=$nbr ; $i++) { 
-                    
         
-    
+     // TO DO: faire une page avec des fonctions pour valider le formulaire 
+     // TO DO : mettre le for dans le formulaire 
     ?>
     <form action="./verification.php" method="post">
+        <?php
+        // boucle pour repeter le formulaire le nombre de fois que l'utilisateur demande
+        for ($i=1; $i <=$nbr ; $i++) { 
+        ?>
         <fieldset>
         <legend>Vos coordonées</legend>
         <label for="street">Street/Rue:</label> <br>
@@ -84,22 +87,22 @@
     <label for="zipcode">Zipcode</label>
     <input type="text" name="zipcode" id="zipcode" required> <br><br>
 
-    <button type="submit" class="confirmer">Confirmer</button>
 
         </fieldset>
     
 <?php
         }
     } else {
-        echo("Saisie invalide"); ?> <br> <br> <?php 
-        echo("Veuillez appuyer sur retour pour saisir un chiffre valide"); ?> <br> <br> <?php 
-        ?>
-        <button type="button" onclick="window.location.href='index.php';">Retour</button>
+        ?> <center> <?php echo("Saisie invalide");?> </center> <br> <br> <?php 
+       ?> <center> <?php echo("Veuillez appuyer sur retour pour saisir un chiffre valide"); ?></center> <br> <br> 
+        <center><button type="button" onclick = "window.location.href = '../index.php';" class="confirm">Retour</button></center>
         <?php
-    };
+        exit();
+    }
     ?>
-
+    
     <!--boutton confirmer --> 
+        <button type="submit" class="confirmer">Confirmer</button>
     </form>
 </body>
 </html>

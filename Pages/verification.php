@@ -39,7 +39,8 @@
     </form>
 </body>
 </html>
-
-<!--onclick="window.location.href='adress.php';" -->
-<!-- comment afficher les donnes saisies -->
-<!-- comment faire une boucle pour repeter le formulaire --> 
+  
+<!-- TO DO -->
+<!--onclick="window.location.href='adress.php';" : alternatif-->
+<!-- comment afficher les donnes saisies "verification.php-->
+<!-- comment faire une boucle pour repeter le formulaire le nombre de fois que l'utilisateur demande :adress.php--> 
