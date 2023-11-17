@@ -1,6 +1,7 @@
 <?php
 require_once("../functions/validation");
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     $street = $_POST["street"];
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($isValid) {
         // Les données sont valides
-        
+
     } else {
         // Les données ne sont pas valides, afficher un message d'erreur 
         if (!validateStreet($street)) {
@@ -41,39 +42,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>verification</title>
 </head>
 <body>
-    <form action="" method="post">
+    <div>
         <?php
-
-    // verification_page.php
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Récupérer les données du formulaire
-        $street = $_POST["street"];
-        $no_street = $_POST["no_street"];
-        $type = $_POST["type"];
-        $city = $_POST["city"];
-        $zipcode = $_POST["zipcode"];
-
-        // Afficher les données pour vérification
-        echo "<p>Street: $street</p>";
-        echo "<p>Street Number: $no_street</p>";
-        echo "<p>Type: $type</p>";
-        echo "<p>City: $city</p>";
-        echo "<p>Zip Code: $zipcode</p>";
-
-    } 
-        
-        else {
-        // Rediriger vers la page d'erreur si les données ne sont pas disponibles
-        header("Location: error_page.php");
-        exit(); }
-    ?>
-
+        var_dump($_POST);
+        $result = $_POST;
+        echo "<form action=''>" ;
+        if(count($result) >0) {
+            foreach($result as $key => $value) {
+                echo "<input type = 'text' id = '$key' value= '$value' readonly /> <br>" ;
+            }
+        }
+        echo "</form>";
+        ?>
+    </div>
+    <h2>Veuillez confirmer si vos informations sont corrects ou annuler dans le cas contraire</h2>
     <button type="submit" name ="approuver">Confirmer</button>
-    <button type="button" onclick="window.location.href='address.php';">Annuler</button>
+     <button onclick="window.history.back();" class="confirm">Annuler</button> 
     </form>
 </body>
 </html>

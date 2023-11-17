@@ -3,12 +3,10 @@
 
 function validateStreet($street) {
     return is_string($street) && strlen($street) <= 50;
-    echo("street name invalid");
 }
 
 function validateZipcode($zipcode) {
     return strlen($zipcode) === 6;
-    echo("zip code invalid");
 }
 
 ?>

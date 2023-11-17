@@ -8,17 +8,19 @@
 </head>
 <body>
     <?php
+    //session_start();
+    
     //verifier si l'utilisateur entre un chiffre, si c'est un nombre a virgule on se charge de le convertir
-    if (is_numeric($_POST["Nbr_addresse"])){
+    if (isset($_POST["Nbr_addresse"]) && is_numeric($_POST["Nbr_addresse"])){
         $nbr = intval($_POST["Nbr_addresse"]);
-        
-     // TO DO: faire une page avec des fonctions pour valider le formulaire 
+
+        //$_SESSION['Nbr_addresse'] = $nbr;
+
      // TO DO : mettre le for dans le formulaire 
     ?>
-    <form action="./verification.php" method="post">
+    <form action="./verification.php"method="post">
         <?php
-        // boucle pour repeter le formulaire le nombre de fois que l'utilisateur demande
-        for ($i=1; $i <=$nbr ; $i++) { 
+        for ($i = 1; $i<=$nbr; $i++){
         ?>
         <fieldset>
         <legend>Vos coordonées</legend>
