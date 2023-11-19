@@ -1,18 +1,3 @@
-<!--?php
-session_start();
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $_SESSION['form_data']=$_POST;
-
-        header('Location: ./verification.php');
-        exit();
-    }
-    if (isset($_SESSION['form_data'])) {
-        $formData = $_SESSION['form_data'];
-        unset($_SESSION['form_data']); // Remove session data after using it
-    } else {
-        $formData = array(); // If no session data, initialize as an empty array
-    }
-?-->
 
 <!DOCTYPE html>
 <html lang="en">

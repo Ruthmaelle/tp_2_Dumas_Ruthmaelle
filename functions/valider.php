@@ -43,18 +43,4 @@ function validateZipcode($zipcode) {
    return $responses;
 }
 
-function validateNbr_address($Nbr_address) {
-    $length = strlen($Nbr_address);
-    $responses =[
-        'isValid' => true,
-        'msg' => ''
-    ];
-    if ($length > 7){
-        $responses=[
-            'isValid' => false,
-            'msg' => 'Nbr_address trop long'
-        ];
-    }
-}
-
 ?>
