@@ -1,3 +1,19 @@
+<!--?php
+session_start();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $_SESSION['form_data']=$_POST;
+
+        header('Location: ./verification.php');
+        exit();
+    }
+    if (isset($_SESSION['form_data'])) {
+        $formData = $_SESSION['form_data'];
+        unset($_SESSION['form_data']); // Remove session data after using it
+    } else {
+        $formData = array(); // If no session data, initialize as an empty array
+    }
+?-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +24,16 @@
 </head>
 <body>
     <?php
-    //session_start();
+
+
+    
     
     //verifier si l'utilisateur entre un chiffre, si c'est un nombre a virgule on se charge de le convertir
-    if (isset($_POST["Nbr_addresse"]) && is_numeric($_POST["Nbr_addresse"])){
+    if (isset($_POST["Nbr_addresse"]) && is_numeric($_POST["Nbr_addresse"])) {
         $nbr = intval($_POST["Nbr_addresse"]);
+        var_dump($_POST["Nbr_addresse"]);
+        $_SESSION['Nbr_addresse'] = $nbr;
 
-        //$_SESSION['Nbr_addresse'] = $nbr;
-
-     // TO DO : mettre le for dans le formulaire 
     ?>
     <form action="./verification.php"method="post">
         <?php
@@ -24,14 +41,14 @@
         ?>
         <fieldset>
         <legend>Vos coordonées</legend>
-        <label for="street">Street/Rue:</label> <br>
-        <input type="text" name="street" id="street" required> <br><br>
+        <label for="street<?php echo $i; ?>">Street/Rue:</label> <br>
+        <input type="text" name="street<?php echo $i; ?>" id="street<?php echo $i; ?>" required> <br><br>
 
-    <label for="no_street">No street/No Rue:</label> <br>
-    <input type="number" name="no_street" id="no_street" required> <br><br>
+    <label for="no_street<?php echo $i; ?>">No street/No Rue:</label> <br>
+    <input type="number" name="no_street<?php echo $i; ?>" id="no_street<?php echo $i; ?>" required> <br><br>
 
-    <label for="type">Type:</label> <br>
-    <select name="type" id="type" required>
+    <label for="type<?php echo $i; ?>">Type:</label> <br>
+    <select name="type<?php echo $i; ?>" id="type<?php echo $i; ?>" required>
     <option value="" disabled selected>Choisir</option>
         <option value="livraison">Livraison</option>
         <option value="facturation">Facturation</option>
@@ -39,8 +56,8 @@
         <option value="autre">Autres</option>
     </select> <br><br>
 
-    <label for="city">Province:City/Ville:</label> <br>
-    <select name="city" id="city" required>
+    <label for="city<?php echo $i; ?>">Province:City/Ville:</label> <br>
+    <select name="city<?php echo $i; ?>" id="city<?php echo $i; ?>" required>
         <option value="" disabled selected>Choisir</option>
         <optgroup label = "Alberta">
             <option value="Brooks">Brooks</option>
@@ -86,8 +103,8 @@
         </optgroup>
     </select> <br><br>
 
-    <label for="zipcode">Zipcode</label>
-    <input type="text" name="zipcode" id="zipcode" required> <br><br>
+    <label for="zipcode<?php echo $i; ?>">Zipcode</label>
+    <input type="text" name="zipcode<?php echo $i; ?>" id="zipcode<?php echo $i; ?>" required> <br><br>
 
 
         </fieldset>
@@ -95,8 +112,8 @@
 <?php
         }
     } else {
-        ?> <center> <?php echo("Saisie invalide");?> </center> <br> <br> <?php 
-       ?> <center> <?php echo("Veuillez appuyer sur retour pour saisir un chiffre valide"); ?></center> <br> <br> 
+        ?> <center><?php echo("Saisie invalide");?></center> <br> <br> <?php 
+       ?> <center><?php echo("Veuillez appuyer sur retour pour saisir un chiffre valide"); ?></center> <br> <br> 
         <center><button type="button" onclick = "window.location.href = '../index.php';" class="confirm">Retour</button></center>
         <?php
         exit();
